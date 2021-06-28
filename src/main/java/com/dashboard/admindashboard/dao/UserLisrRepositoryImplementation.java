@@ -18,7 +18,7 @@ public class UserLisrRepositoryImplementation implements  UsersRepositoty{
 
     @Override
     public int deleteUser(UUID id) {
-        return 0;
+        return 1;
     }
 
     @Override
