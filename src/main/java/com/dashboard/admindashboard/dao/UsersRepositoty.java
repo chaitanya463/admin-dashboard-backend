@@ -4,6 +4,7 @@ import com.dashboard.admindashboard.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface UsersRepositoty{
@@ -12,11 +13,11 @@ public interface UsersRepositoty{
         UUID id = UUID.randomUUID();
         return addUser(id, user);
     }
-    int deleteUser(UUID id);
+    boolean deleteUser(UUID id);
 
     int updateUser(UUID id, User user);
 
     List<User> getAllUsers();
 
-    User getUser(UUID id);
+    Optional<User> getUser(UUID id);
 }

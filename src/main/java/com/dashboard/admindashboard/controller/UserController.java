@@ -30,6 +30,16 @@ public class UserController {
 
     @GetMapping("users/{id}")
     public User getUser(@PathVariable UUID id) {
-        return userService.getUser(id);
+        return userService.getUser(id).orElse(null);
+    }
+
+    @DeleteMapping("users/{id}")
+    public boolean deleteUser(@PathVariable UUID id) {
+        return userService.deleteUser(id);
+    }
+
+    @PutMapping("users/{id}")
+    public int updateUser(@PathVariable UUID id, @RequestBody User user) {
+        return userService.updateUser(id, user);
     }
 }

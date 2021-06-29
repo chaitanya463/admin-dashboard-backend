@@ -1,14 +1,18 @@
 package com.dashboard.admindashboard.dao;
 
 import com.dashboard.admindashboard.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository("listrepo")
 public class UserLisrRepositoryImplementation implements  UsersRepositoty{
+    private final Logger logger = LoggerFactory.getLogger(UserLisrRepositoryImplementation.class);
     private static List<User> list = new ArrayList<>();
     @Override
     public UUID addUser(UUID id, User user) {
@@ -17,12 +21,22 @@ public class UserLisrRepositoryImplementation implements  UsersRepositoty{
     }
 
     @Override
-    public int deleteUser(UUID id) {
-        return 1;
+    public boolean deleteUser(UUID id) {
+        Optional<User> user = getUser(id);
+        if (user.isPresent()) {
+            return list.remove(user.get());
+        }
+        return false;
     }
 
     @Override
-    public int updateUser(UUID id, User user) {
+    public int updateUser(UUID id, User newUser) {
+        Optional<User> user = getUser(id);
+        int index = list.indexOf(user.get());
+        if (user.isPresent()) {
+            list.set(index, new User(id, newUser.getUserName(), newUser.getFullName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNum(), newUser.getAddress(), newUser.getGender()));
+            return 1;
+        }
         return 0;
     }
 
@@ -32,7 +46,7 @@ public class UserLisrRepositoryImplementation implements  UsersRepositoty{
     }
 
     @Override
-    public User getUser(UUID id) {
-        return (User)list.stream().filter(user -> user.getId() == id);
+    public Optional<User> getUser(UUID id) {
+        return list.stream().filter(user -> user.getId().equals(id)).findFirst();
     }
 }
