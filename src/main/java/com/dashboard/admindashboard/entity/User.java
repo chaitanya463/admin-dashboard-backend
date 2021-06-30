@@ -46,4 +46,8 @@ public class User {
     @NotNull
     @JsonProperty("gender")
     private String gender;
+
+    @NotNull
+    @JsonProperty("designation")
+    private String designation;
 }

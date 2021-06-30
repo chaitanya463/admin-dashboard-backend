@@ -16,7 +16,7 @@ public class UserLisrRepositoryImplementation implements  UsersRepositoty{
     private static List<User> list = new ArrayList<>();
     @Override
     public UUID addUser(UUID id, User user) {
-       list.add(new User(id, user.getUserName(), user.getFullName(), user.getEmail(), user.getPassword(), user.getPhoneNum(), user.getAddress(), user.getGender()));
+       list.add(new User(id, user.getUserName(), user.getFullName(), user.getEmail(), user.getPassword(), user.getPhoneNum(), user.getAddress(), user.getGender(), user.getDesignation()));
        return id;
     }
 
@@ -34,7 +34,7 @@ public class UserLisrRepositoryImplementation implements  UsersRepositoty{
         Optional<User> user = getUser(id);
         int index = list.indexOf(user.get());
         if (user.isPresent()) {
-            list.set(index, new User(id, newUser.getUserName(), newUser.getFullName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNum(), newUser.getAddress(), newUser.getGender()));
+            list.set(index, new User(id, newUser.getUserName(), newUser.getFullName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNum(), newUser.getAddress(), newUser.getGender(), newUser.getDesignation()));
             return 1;
         }
         return 0;
