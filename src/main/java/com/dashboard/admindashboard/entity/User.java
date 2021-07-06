@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Entity
@@ -28,6 +29,7 @@ public class User {
     private String fullName;
 
     @NotNull
+    @NotBlank(message = "Email is mandatory")
     @JsonProperty("email")
     private String email;
 

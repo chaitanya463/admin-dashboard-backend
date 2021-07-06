@@ -2,6 +2,7 @@ package com.dashboard.admindashboard.service;
 
 import com.dashboard.admindashboard.dao.UsersRepositoty;
 import com.dashboard.admindashboard.entity.User;
+import com.dashboard.admindashboard.error.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,13 @@ public class UserService {
         return repositoty.getAllUsers();
     }
 
-    public Optional<User> getUser(UUID id) {
-        return repositoty.getUser(id);
+    public User getUser(UUID id) throws UserNotFoundException {
+        Optional<User> user = repositoty.getUser(id);
+        if (!user.isPresent()) {
+            throw new UserNotFoundException("User not found");
+        }
+
+        return user.get();
     }
 
     public boolean deleteUser(UUID id) {

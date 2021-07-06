@@ -1,11 +1,14 @@
 package com.dashboard.admindashboard.controller;
 
 import com.dashboard.admindashboard.entity.User;
+import com.dashboard.admindashboard.error.UserNotFoundException;
 import com.dashboard.admindashboard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @CrossOrigin
@@ -20,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping("addUser")
-    public UUID addUser(@RequestBody User user) {
+    public UUID addUser(@Valid @RequestBody User user) {
         return userService.addPerson(user);
     }
 
@@ -30,8 +33,8 @@ public class UserController {
     }
 
     @GetMapping("users/{id}")
-    public User getUser(@PathVariable UUID id) {
-        return userService.getUser(id).orElse(null);
+    public User getUser(@PathVariable UUID id) throws UserNotFoundException {
+        return userService.getUser(id);
     }
 
     @DeleteMapping("users/{id}")
