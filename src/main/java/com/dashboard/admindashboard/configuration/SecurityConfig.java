@@ -1,4 +1,4 @@
-package com.dashboard.admindashboard.configuration.config;
+package com.dashboard.admindashboard.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

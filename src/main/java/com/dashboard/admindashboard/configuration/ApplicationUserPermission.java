@@ -1,4 +1,4 @@
-package com.dashboard.admindashboard.configuration.config;
+package com.dashboard.admindashboard.configuration;
 
 
 public enum ApplicationUserPermission {

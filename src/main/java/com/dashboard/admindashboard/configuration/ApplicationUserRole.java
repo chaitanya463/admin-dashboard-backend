@@ -1,12 +1,12 @@
-package com.dashboard.admindashboard.configuration.config;
+package com.dashboard.admindashboard.configuration;
 
 
 import com.google.common.collect.Sets;
 
 import java.util.Set;
 
-import static com.dashboard.admindashboard.configuration.config.ApplicationUserPermission.USER_READ;
-import static com.dashboard.admindashboard.configuration.config.ApplicationUserPermission.USER_WRITE;
+import static com.dashboard.admindashboard.configuration.ApplicationUserPermission.USER_READ;
+import static com.dashboard.admindashboard.configuration.ApplicationUserPermission.USER_WRITE;
 
 public enum ApplicationUserRole {
     USER(Sets.newHashSet()),
