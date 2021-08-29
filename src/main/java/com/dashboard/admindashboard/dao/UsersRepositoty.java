@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UsersRepositoty {
+public interface UsersRepositoty extends CrudRepository<User, UUID>{
     UUID addUser(UUID id, User user);
     default UUID addUser(User user) {
         UUID id = UUID.randomUUID();

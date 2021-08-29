@@ -10,30 +10,30 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository("mysql")
-public class UsersPostgresRepo implements UsersRepositoty{
-
-    @Override
-    public UUID addUser(UUID id, User user) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteUser(UUID id) {
-        return false;
-    }
-
-    @Override
-    public int updateUser(UUID id, User user) {
-        return 0;
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return null;
-    }
-
-    @Override
-    public Optional<User> getUser(UUID id) {
-        return Optional.empty();
-    }
+public class UsersPostgresRepo{
+//
+//    @Override
+//    public UUID addUser(UUID id, User user) {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean deleteUser(UUID id) {
+//        return false;
+//    }
+//
+//    @Override
+//    public int updateUser(UUID id, User user) {
+//        return 0;
+//    }
+//
+//    @Override
+//    public List<User> getAllUsers() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Optional<User> getUser(UUID id) {
+//        return Optional.empty();
+//    }
 }
