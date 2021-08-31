@@ -1,5 +1,6 @@
 package com.dashboard.admindashboard.configuration;
 
+import com.dashboard.admindashboard.configuration.filter.JwtTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -24,12 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDetailsService;
     private PasswordEncoder passwordEncoder;
-    private JWTFilter jwtTokenFilter;
+    private JwtTokenFilter jwtTokenFilter;
 
     @Autowired
-    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+    public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, JwtTokenFilter jwtTokenFilter) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
+        this.jwtTokenFilter = jwtTokenFilter;
     }
 
     @Override

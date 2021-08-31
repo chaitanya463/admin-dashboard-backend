@@ -9,12 +9,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UsersRepositoty extends CrudRepository<User, UUID>{
-    UUID addUser(UUID id, User user);
-    default UUID addUser(User user) {
-        UUID id = UUID.randomUUID();
-        return addUser(id, user);
-    }
+public interface UsersRepositoty extends JpaRepository<User, UUID>{
+    UUID addUser(User user);
+
     boolean deleteUser(UUID id);
 
     int updateUser(UUID id, User user);

@@ -21,6 +21,8 @@ public class UserService {
     }
 
     public UUID addPerson(User user) {
+        UUID id = UUID.randomUUID();
+        user.setId(id);
         return repositoty.addUser(user);
     }
 
